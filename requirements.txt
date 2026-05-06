@@ -34,6 +34,7 @@ Pygments==2.19.2
 PyJWT==2.10.1
 python-dotenv==1.1.1
 python-multipart==0.0.20
+pytube==15.0.0
 PyYAML==6.0.3
 realtime==2.22.1
 rich==14.2.0
