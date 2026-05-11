@@ -1,4 +1,4 @@
-# 🎬 Video Downloader API (project focused on refining DevOps skills such as Python, Docker, and CI/CD concepts)
+# 🎬 Video Downloader API (project focused on refining DevOps skills such as Python, Docker, GitHub Actions and CI/CD concepts)
 
 Simple containerized Python API that queues and processes YouTube video downloads asynchronously.
 
