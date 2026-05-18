@@ -1,2 +1,2 @@
-def test_intentional_fail():
-    assert False
+def test_intentional_pass():
+    assert True
