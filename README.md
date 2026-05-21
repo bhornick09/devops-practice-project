@@ -1,42 +1,61 @@
-# 🎬 Video Downloader API (project focused on refining DevOps skills such as Python, Docker, GitHub Actions and CI/CD concepts)
+# 🎬 Video Downloader API
 
-Simple containerized Python API that queues and processes YouTube video downloads asynchronously.
-
----
-
-## 🚀 Features
-- Submit download jobs via API
-- Track job status (queued → downloading → completed)
-- Background processing with threads
-- Dockerized service
-- CI pipeline with GitHub Actions
+A containerized FastAPI service that accepts video download requests, queues them, and processes them asynchronously. This project is designed to demonstrate both software engineering, and quality engineering practices.
 
 ---
 
-## 🧱 Tech Stack used
-- FastAPI (Python)
+## 🚀 What this project demonstrates
+- REST API design with FastAPI
+- Background job processing using threads
+- Lightweight browser UI for manual submission
+- End-to-end test coverage with API tests, UI smoke tests, and Selenium browser automation
+- CI pipeline using GitHub Actions
+- Docker-based packaging for reproducible deployment
+
+---
+
+## 🧱 Tech stack
+- Python 3.11
+- FastAPI
 - Docker
 - GitHub Actions
-- pytube
+- Selenium + WebDriver manager
+- pytest
 
 ---
 
-## 🔁 CI/CD Skills
-- GitHub Actions runs on every push:
-- installs dependencies
-- validates imports
-- builds Docker image
+## 🧪 Testing coverage
+- `tests/test_api.py` covers the API endpoints:
+  - `GET /`
+  - `POST /download`
+  - `GET /status/{job_id}`
+- `tests/test_ui.py` verifies the browser UI page and form submission behavior
+- `tests/test_selenium.py` runs a headless Chrome browser against `/ui`, submits the form, and confirms a `job_id` is returned
+- External download behavior is isolated by mocking thread startup during unit tests
 
-## 🔮 Side notes
-- In-memory job storage (no DB yet)
-- Simple thread-based worker
-- pytube may break occasionally
+---
 
-## FastAPI Documentation
-FastAPI automatically generates interactive Swagger UI for testing endpoints, seen in the locally hosted screenshot below.
-<img width="945" height="649" alt="image" src="https://github.com/user-attachments/assets/ec01ab6d-a953-4276-ac6c-ac8d20a8ab02" />
+## 🔁 CI/CD workflow
+The GitHub Actions workflow includes:
+- dependency installation
+- API and UI unit tests
+- Docker image build
+- dedicated Selenium browser test job
 
-## Github Action Screenshot (Pass, fail, and in progress)
-Github Actions automatically installs dependencies, validates my application, and builds the Docker image on every commit to the main branch.
-It can be setup to react to a variety of repo changes, but in this case I've only set it up for pushes.
-<img width="1312" height="399" alt="image" src="https://github.com/user-attachments/assets/17a24801-aed7-41bb-9a54-ae2a8e78f6c8" />
+
+---
+
+## 📚 Project structure
+- `app/main.py` - FastAPI application and UI route
+- `app/worker.py` - background job processor
+- `Dockerfile` - container definition
+- `tests/` - API, UI, and Selenium test coverage
+- `.github/workflows/ci.yml` - CI pipeline configuration
+
+---
+
+## 🔮 Notes
+- Storage is in memory, so jobs are lost on server restart
+- Pytube can be be unreliable due to YouTube changes
+- Selenium is included to demonstrate browser-level validation and CI reliability but the UI isn't fully developed.
+
