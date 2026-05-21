@@ -58,3 +58,6 @@ watchfiles==1.1.1
 websockets==15.0.1
 yarl==1.22.0
 pytest>=8.0.0
+requests>=2.31.0
+selenium==4.14.0
+webdriver-manager==4.1.0
